@@ -1,9 +1,6 @@
 from data_handler import *
 from sklearn.neighbors import KNeighborsClassifier
 
-print(f'Running test...')
-print(f'Load the data set from csv')
-
 # Load data
 names = DataHandler(csv_path='name_gender.csv')
 
@@ -17,7 +14,7 @@ knnc.fit(names.trn_data, names.trn_target)
 # Validate the classifier
 trn_score = knnc.score(names.trn_data, names.trn_target)
 tst_score = knnc.score(names.tst_data, names.tst_target)
-print(f'Classifier evaluation:\n   trn: {trn_score}\n   tst: {tst_score}')
+print(f'CL: Classifier evaluation:\n       trn: {trn_score}\n       tst: {tst_score}')
 
 def predict_name(name):
     f = names.data_to_feat(name)

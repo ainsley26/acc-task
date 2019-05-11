@@ -81,7 +81,7 @@ class DataHandler():
         assert len(self._trn_data) == len(self._trn_target)
         assert len(self._tst_data) + len(self._trn_data) == len(self._data)
 
-        print(f'Set sizes:\n   tst: {len(self.tst_data)}\n   trn: {len(self.trn_data)}')
+        print(f'DH: Set sizes:\n       tst: {len(self.tst_data)}\n       trn: {len(self.trn_data)}')
 
     def data_to_feat(self, o):
         name = o.lower()
