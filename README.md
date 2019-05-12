@@ -1,3 +1,3 @@
-# Scikit-Learn Demo
+# Acc-Task
 
-Testing ground for the machine learning capabilities of scikit-learn.
+Using scikit-learn to do ML on names
