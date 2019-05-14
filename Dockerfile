@@ -2,7 +2,7 @@
 FROM python:3.6-alpine
 
 # set working directory and copy contents to container
-WORDIR /app
+WORKDIR /app
 COPY . /app
 
 # install packages from requirements
