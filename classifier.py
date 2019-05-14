@@ -1,21 +1,21 @@
 from data_handler import *
 from sklearn.neighbors import KNeighborsClassifier
 
-# Load data
-names = DataHandler(csv_path='name_gender.csv')
+class Classifier():
+    def __init__(self, file_name, slice=8):
+        # load data
+        self.names = DataHandler(csv_path=file_name)
+        self.names.slice_data(slice)
 
-# Slice data
-names.slice_data(8)
+        # create classifier
+        self.clf = KNeighborsClassifier(n_neighbors=3)
+        self.clf.fit(self.names.trn_data, self.names.trn_target)
 
-# Create the classifier
-knnc = KNeighborsClassifier(n_neighbors=5)
-knnc.fit(names.trn_data, names.trn_target)
+        # validate classifier
+        trn_score = self.clf.score(self.names.trn_data, self.names.trn_target)
+        tst_score = self.clf.score(self.names.tst_data, self.names.tst_target)
+        print(f'CL: Classifier evaluation:\n       trn: {trn_score}\n       tst: {tst_score}')
 
-# Validate the classifier
-trn_score = knnc.score(names.trn_data, names.trn_target)
-tst_score = knnc.score(names.tst_data, names.tst_target)
-print(f'CL: Classifier evaluation:\n       trn: {trn_score}\n       tst: {tst_score}')
-
-def predict_name(name):
-    f = names.data_to_feat(name)
-    return knnc.predict([f])
+    def predict_name(self, name):
+        f = self.names.data_to_feat(name)
+        return self.clf.predict([f])
