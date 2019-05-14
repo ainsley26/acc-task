@@ -83,6 +83,7 @@ class DataHandler():
 
         print(f'DH: Set sizes:\n       tst: {len(self.tst_data)}\n       trn: {len(self.trn_data)}')
 
+    # used to generate the feature representation
     def data_to_feat(self, o):
         name = o.lower()
         feat = [(int.from_bytes(name[0].encode('ascii'), 'little') - 97)/25.0,
